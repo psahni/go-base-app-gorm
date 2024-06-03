@@ -5,7 +5,7 @@ import (
 	"gorm.io/gorm"
 )
 
-const DB_URL = "postgres://postgres:root@localhost:5432/doctor_patients_appointments"
+const DB_URL = "postgres://postgres:root@localhost:5432/test_database"
 
 func Connect() (*gorm.DB, error) {
 	gormDB, err := gorm.Open(postgres.Open(DB_URL), &gorm.Config{})

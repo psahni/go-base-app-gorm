@@ -3,18 +3,20 @@
 package migration
 
 import (
+	"main/internal/models"
+
 	"github.com/go-gormigrate/gormigrate/v2"
 	"gorm.io/gorm"
 )
 
-var createTable20240531180603 = &gormigrate.Migration{
+var initSchema20240531180603 = &gormigrate.Migration{
 	ID: "20240531180603",
 	Migrate: func(db *gorm.DB) error {
-		// TODO add migration logic
-		return nil
+		return db.AutoMigrate(
+			&models.User{},
+		)
 	},
 	Rollback: func(db *gorm.DB) error {
-		// TODO add rollback logic
-		return nil
+		return db.Migrator().DropTable(&models.User{})
 	},
 }
