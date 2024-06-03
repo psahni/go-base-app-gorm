@@ -1,14 +1,8 @@
 package main
 
-import (
-	"fmt"
-	"main/db"
-	"net/http"
+import "main/cmd"
 
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
-)
-
+/*
 func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.RequestID)
@@ -27,4 +21,9 @@ func main() {
 	})
 
 	http.ListenAndServe(":3333", r)
+}
+*/
+
+func main() {
+	cmd.Execute()
 }
