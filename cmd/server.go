@@ -2,11 +2,12 @@ package cmd
 
 import (
 	"fmt"
-	"main/db"
 	"net/http"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/go-lang-base-app/db"
+	"github.com/go-lang-base-app/internal/config"
 	"github.com/spf13/cobra"
 )
 
@@ -18,6 +19,13 @@ var httpServerCommand = &cobra.Command{
 
 func runHTTPServer(_ *cobra.Command, _ []string) error {
 	fmt.Println("==runHTTPServer()")
+	err := config.Read()
+	if err != nil {
+		panic("Invalid configuration")
+	}
+	cfg := config.GetConfig()
+	fmt.Println("===")
+	fmt.Println(cfg.Database.ConnectionUrl)
 	r := chi.NewRouter()
 	r.Use(middleware.RequestID)
 	r.Use(middleware.Logger)

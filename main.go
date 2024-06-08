@@ -1,6 +1,6 @@
 package main
 
-import "main/cmd"
+import "github.com/go-lang-base-app/cmd"
 
 /*
 func main() {

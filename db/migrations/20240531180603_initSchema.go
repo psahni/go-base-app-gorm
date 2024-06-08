@@ -3,7 +3,7 @@
 package migration
 
 import (
-	"main/internal/models"
+	"github.com/go-lang-base-app/internal/models"
 
 	"github.com/go-gormigrate/gormigrate/v2"
 	"gorm.io/gorm"

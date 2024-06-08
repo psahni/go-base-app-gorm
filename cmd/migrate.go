@@ -1,8 +1,9 @@
 package cmd
 
 import (
-	"main/db"
-	migration "main/db/migrations"
+	migration "github.com/go-lang-base-app/db/migrations"
+
+	"github.com/go-lang-base-app/db"
 
 	"github.com/spf13/cobra"
 )
