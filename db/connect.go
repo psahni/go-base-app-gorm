@@ -1,14 +1,14 @@
 package db
 
 import (
+	"github.com/go-lang-base-app/internal/config"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-const DB_URL = "postgres://postgres:root@localhost:5432/test_database"
-
 func Connect() (*gorm.DB, error) {
-	gormDB, err := gorm.Open(postgres.Open(DB_URL), &gorm.Config{})
+	connectionUrl := config.GetConfig().Database.ConnectionUrl
+	gormDB, err := gorm.Open(postgres.Open(connectionUrl), &gorm.Config{})
 	if err != nil {
 		return nil, err
 	}

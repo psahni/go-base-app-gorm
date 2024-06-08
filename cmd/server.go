@@ -24,8 +24,6 @@ func runHTTPServer(_ *cobra.Command, _ []string) error {
 		panic("Invalid configuration")
 	}
 	cfg := config.GetConfig()
-	fmt.Println("===")
-	fmt.Println(cfg.Database.ConnectionUrl)
 	r := chi.NewRouter()
 	r.Use(middleware.RequestID)
 	r.Use(middleware.Logger)
@@ -42,6 +40,6 @@ func runHTTPServer(_ *cobra.Command, _ []string) error {
 		w.Write([]byte("hello world"))
 	})
 
-	http.ListenAndServe(":3333", r)
+	http.ListenAndServe(fmt.Sprintf(":%d", cfg.Server.Port), r)
 	return nil
 }
