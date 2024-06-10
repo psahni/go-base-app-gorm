@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    container_name: go_lang_base_app
+    ports:
+      - "9090:80"
+    image: 
+  db:
+    image: postgresql
+    container_name: postgresql
+    
+volumes:
+networks:
