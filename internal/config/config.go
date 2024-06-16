@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"strings"
 	"time"
 
@@ -34,7 +35,7 @@ type DatabaseConfig struct {
 	MaxIdleConns          int           `mapstructure:"max_idle_conns"`
 }
 
-var cfg Config
+var cfg *Config
 
 func Read() error {
 	viper.AddConfigPath(".")
@@ -53,5 +54,12 @@ func Read() error {
 }
 
 func GetConfig() *Config {
-	return &cfg
+	if cfg == nil {
+		err := Read()
+		if err != nil {
+			fmt.Println(cfg)
+		}
+	}
+
+	return cfg
 }
