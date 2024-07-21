@@ -37,7 +37,7 @@ func runHTTPServer(_ *cobra.Command, _ []string) error {
 	}
 
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("hello world..Prashant"))
+		w.Write([]byte("hello world..."))
 	})
 
 	http.ListenAndServe(fmt.Sprintf(":%d", cfg.Server.Port), r)
