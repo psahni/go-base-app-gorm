@@ -1,22 +1,31 @@
 version: '3'
 services:
-  # web:
-  #   container_name: go_lang_base_app
-  #   ports:
-  #     - "9090:80"
-  #   image: 
-  db:
-    image: postgres
-    container_name: postgres
+  web:
+    container_name: go_base_app
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
     ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_DB: test_database
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: root
-      PGDATA: /var/lib/postgresql/data/go_lang_base_app
+      - "3333:3333"
+    depends_on:
+      - postgres
     volumes:
-      - .:/var/lib/postgresql/data
-    
-# volumes:
-# networks:
+      - ./:/go_base_app
+  postgres:
+    image: postgres
+    restart: always
+    container_name: go_app_postgres
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: go_app_database
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - db:/var/lib/postgresql/pg_data
+volumes:
+  cache:
+    driver: local
+  db:
+    driver: local
+
