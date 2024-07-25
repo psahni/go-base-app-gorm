@@ -26,4 +26,4 @@ RUN  go mod tidy
 EXPOSE 3333
 EXPOSE 40000
 
-CMD ["air"]
+CMD ["air", "--", "http_server"]

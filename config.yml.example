@@ -1,0 +1,14 @@
+name: "Golang Base App"
+env: "development"
+server:
+  port: 3333
+  allowed_origins: "https://* http://*"
+log:
+  level: "debug"
+database:
+  connection_url: "postgresql://root:secret@postgres:5432/go_app_database?sslmode=disable"
+  conn_max_lifetime: 30m
+  conn_max_idle_time: 15m
+  max_open_conns: 5
+  max_idle_conns: 2
+  migrations_path: "file://db/migrations"
